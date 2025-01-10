@@ -73,3 +73,10 @@ export const testimonials = [
     image: "/placeholder.svg?height=80&width=80",
   },
 ];
+
+export const stats = [
+  { label: "USERS", value: "8,781" },
+  { label: "WEBSITES", value: "279,903" },
+  { label: "DEPLOYS", value: "162,105" },
+  { label: "PROMPTS", value: "291,392" },
+];

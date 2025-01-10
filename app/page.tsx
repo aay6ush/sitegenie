@@ -1,5 +1,6 @@
 import Hero from "@/components/landing/hero";
 import Features from "@/components/landing/features";
+import Stats from "@/components/landing/stats";
 import Testimonials from "@/components/landing/testimonials";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <Features />
       <Testimonials />
+      <Stats />
     </main>
   );
 }
