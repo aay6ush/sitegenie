@@ -80,3 +80,50 @@ export const stats = [
   { label: "DEPLOYS", value: "162,105" },
   { label: "PROMPTS", value: "291,392" },
 ];
+
+export const plans = [
+  {
+    id: 1,
+    name: "Starter",
+    description: "Perfect for individuals and small projects",
+    monthlyPrice: 49,
+    yearlyPrice: 470,
+    isPopular: false,
+    features: [
+      "5 Projects",
+      "Basic webpage generation",
+      "Basic SEO tools",
+      "1 Team member",
+    ],
+  },
+  {
+    id: 2,
+    name: "Business",
+    description: "Ideal for growing businesses",
+    monthlyPrice: 99,
+    yearlyPrice: 950,
+    isPopular: true,
+    features: [
+      "10 Projects",
+      "Advanced web apps",
+      "Code download",
+      "Custom domain",
+      "5 Team members",
+    ],
+  },
+  {
+    id: 3,
+    name: "Unlimited",
+    description: "For enterprises and large teams",
+    monthlyPrice: 199,
+    yearlyPrice: 1900,
+    isPopular: false,
+    features: [
+      "25 Projects",
+      "All project types",
+      "White labeling",
+      "Dedicated support",
+      "Unlimited team members",
+    ],
+  },
+];
