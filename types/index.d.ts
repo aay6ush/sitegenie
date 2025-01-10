@@ -5,3 +5,11 @@ declare type FeatureCardProps = {
   accentColor: string;
   buttonColor: string;
 };
+
+declare type TestimonialCardProps = {
+  id: number;
+  quote: string;
+  author: string;
+  role: string;
+  image: string;
+};

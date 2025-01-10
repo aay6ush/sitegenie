@@ -46,3 +46,30 @@ export const features = [
     buttonColor: "bg-pink-50/10",
   },
 ];
+
+export const testimonials = [
+  {
+    id: 1,
+    quote:
+      "SiteGenie has completely transformed how we create websites. The AI understands exactly what we need, and the results are consistently impressive. We've cut our development time by 70%.",
+    author: "Sarah Chen",
+    role: "Marketing Director",
+    image: "/placeholder.svg?height=80&width=80",
+  },
+  {
+    id: 2,
+    quote:
+      "The level of customization and control while maintaining the ease of use is unprecedented. It's like having a professional design team that works at the speed of thought.",
+    author: "Michael Roberts",
+    role: "Startup Founder",
+    image: "/placeholder.svg?height=80&width=80",
+  },
+  {
+    id: 3,
+    quote:
+      "Since implementing SiteGenie, our conversion rates have increased by 40%. The AI-generated layouts are not just beautiful, they're strategically designed to convert.",
+    author: "Emily Parker",
+    role: "Growth Lead",
+    image: "/placeholder.svg?height=80&width=80",
+  },
+];
