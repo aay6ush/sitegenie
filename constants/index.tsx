@@ -1,4 +1,4 @@
-import { Palette, Sparkles, Wand2 } from "lucide-react";
+import { Github, Palette, Sparkles, Twitter, Wand2 } from "lucide-react";
 
 export const words = [
   "beautiful",
@@ -149,4 +149,9 @@ export const faqs = [
     answer:
       "No technical knowledge required! SiteGenie is designed to be user-friendly for everyone. Our AI handles the complex parts, while you focus on your vision and content.",
   },
+];
+
+export const socialLinks = [
+  { icon: Github, href: "https://github.com/aay6ush", label: "GitHub" },
+  { icon: Twitter, href: "https://x.com/aay6ush", label: "Twitter" },
 ];

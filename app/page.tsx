@@ -3,6 +3,7 @@ import Features from "@/components/landing/features";
 import Stats from "@/components/landing/stats";
 import Pricing from "@/components/landing/pricing";
 import FAQ from "@/components/landing/faq";
+import Developer from "@/components/landing/developer";
 import Testimonials from "@/components/landing/testimonials";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <Stats />
       <Pricing />
       <FAQ />
+      <Developer />
     </main>
   );
 }
