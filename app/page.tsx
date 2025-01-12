@@ -4,6 +4,7 @@ import Stats from "@/components/landing/stats";
 import Pricing from "@/components/landing/pricing";
 import FAQ from "@/components/landing/faq";
 import Developer from "@/components/landing/developer";
+import CTA from "@/components/landing/cta";
 import Testimonials from "@/components/landing/testimonials";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Pricing />
       <FAQ />
       <Developer />
+      <CTA />
     </main>
   );
 }
