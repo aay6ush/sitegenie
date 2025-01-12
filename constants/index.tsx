@@ -127,3 +127,26 @@ export const plans = [
     ],
   },
 ];
+
+export const faqs = [
+  {
+    question: "What makes SiteGenie different from other website builders?",
+    answer:
+      "SiteGenie leverages advanced AI to understand your vision and create truly custom landing pages. Unlike traditional builders that use templates, we generate unique designs tailored to your specific needs and brand identity.",
+  },
+  {
+    question: "How does the AI-powered generation work?",
+    answer:
+      "Simply describe what you want in natural language, and our AI analyzes your requirements to generate a complete landing page. It considers your industry, brand colors, content structure, and design preferences to create a unique solution.",
+  },
+  {
+    question: "Can I customize the generated pages?",
+    answer:
+      "While our AI creates a strong foundation, you have full control to customize every aspect of your landing page through our intuitive editor. Modify layouts, colors, fonts, and content with ease.",
+  },
+  {
+    question: "Do I need technical knowledge to use SiteGenie?",
+    answer:
+      "No technical knowledge required! SiteGenie is designed to be user-friendly for everyone. Our AI handles the complex parts, while you focus on your vision and content.",
+  },
+];
