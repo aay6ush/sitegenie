@@ -1,4 +1,14 @@
-import { Github, Palette, Sparkles, Twitter, Wand2 } from "lucide-react";
+import {
+  BookOpen,
+  CirclePlus,
+  Flag,
+  Github,
+  Palette,
+  Sparkles,
+  Twitter,
+  Wand2,
+} from "lucide-react";
+import { Figma, Slack } from "./icons";
 
 export const words = [
   "beautiful",
@@ -154,4 +164,33 @@ export const faqs = [
 export const socialLinks = [
   { icon: Github, href: "https://github.com/aay6ush", label: "GitHub" },
   { icon: Twitter, href: "https://x.com/aay6ush", label: "Twitter" },
+];
+
+export const menuItems = [
+  { icon: CirclePlus, href: "/generate" },
+  { icon: BookOpen, href: "/history" },
+  { icon: Flag, href: "/feedback" },
+];
+
+export const promptCategories = [
+  { name: "Webpage", active: true },
+  { name: "Dashboard", active: false },
+  { name: "Custom", active: false },
+  { name: "E-commerce", active: false },
+  { name: "Webapp", active: false },
+];
+
+export const promptExamples = [
+  {
+    name: "Slack",
+    icon: <Slack className="!size-10" />,
+    description:
+      "Design a cutting-edge webpage for Slack that highlights its real-time collaboration features. Focus on incorporating sle",
+  },
+  {
+    name: "Figma",
+    icon: <Figma className="!size-10" />,
+    description:
+      "Design a sleek and professional webpage for Figma that emphasizes its collaborative design features. Highlight tools lik",
+  },
 ];
