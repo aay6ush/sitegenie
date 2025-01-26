@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     const chat = model.startChat({
       history: [
         { role: "user", parts: [{ text: systemPromptText }] },
-        ...(history as ChatMessage[]).map((msg) => ({
+        ...(history as Message[]).map((msg) => ({
           role: msg.role,
           parts: [{ text: msg.content }],
         })),

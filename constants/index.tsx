@@ -1,6 +1,7 @@
 import {
   BookOpen,
   CirclePlus,
+  File,
   Flag,
   Github,
   Palette,
@@ -9,6 +10,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { Figma, Slack } from "./icons";
+import { ReactElement } from "react";
 
 export const words = [
   "beautiful",
@@ -172,26 +174,18 @@ export const menuItems = [
   { icon: Flag, href: "/feedback" },
 ];
 
-export const promptCategories = [
-  { name: "Webpage", active: true },
-  { name: "Dashboard", active: false },
-  { name: "Custom", active: false },
-  { name: "E-commerce", active: false },
-  { name: "Webapp", active: false },
-];
-
 export const promptExamples = [
   {
     name: "Slack",
     icon: <Slack className="size-20" />,
-    description:
-      "Design a cutting-edge webpage for Slack that highlights its real-time collaboration features. Focus on incorporating sle",
+    prompt:
+      "Design a cutting-edge webpage for Slack that highlights its real-time collaboration features. Focus on incorporating sleek animations, modern UI elements, and a clean layout that showcases how Slack enables seamless team communication and file sharing. Include sections for key features like channels, threads, integrations, and mobile access.",
   },
   {
     name: "Figma",
     icon: <Figma className="size-20" />,
-    description:
-      "Design a sleek and professional webpage for Figma that emphasizes its collaborative design features. Highlight tools lik",
+    prompt:
+      "Design a sleek and professional webpage for Figma that emphasizes its collaborative design features. Highlight tools like real-time collaboration, components, auto-layout, and prototyping. Use a minimalist design with subtle animations and interactive elements to demonstrate Figma's modern approach to design tools. Include sections for key features, pricing, and customer testimonials.",
   },
 ];
 
@@ -249,3 +243,27 @@ export const allowedHTMLElements = [
   "ul",
   "var",
 ];
+
+export const FILE_ICONS: Record<string, ReactElement> = {
+  json: <File className="h-4 w-4 text-yellow-400" />,
+  js: <File className="h-4 w-4 text-yellow-400" />,
+  ts: <File className="h-4 w-4 text-blue-400" />,
+  tsx: <File className="h-4 w-4 text-blue-400" />,
+  jsx: <File className="h-4 w-4 text-blue-400" />,
+
+  css: <File className="h-4 w-4 text-purple-400" />,
+  scss: <File className="h-4 w-4 text-purple-400" />,
+  less: <File className="h-4 w-4 text-purple-400" />,
+
+  html: <File className="h-4 w-4 text-orange-400" />,
+
+  "package.json": <File className="h-4 w-4 text-red-400" />,
+  "package-lock.json": <File className="h-4 w-4 text-red-400" />,
+  "yarn.lock": <File className="h-4 w-4 text-red-400" />,
+  "pnpm-lock.yaml": <File className="h-4 w-4 text-red-400" />,
+
+  ".env": <File className="h-4 w-4 text-green-400" />,
+  ".gitignore": <File className="h-4 w-4 text-gray-400" />,
+
+  default: <File className="h-4 w-4 text-gray-400" />,
+};
