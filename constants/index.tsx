@@ -183,14 +183,69 @@ export const promptCategories = [
 export const promptExamples = [
   {
     name: "Slack",
-    icon: <Slack className="!size-10" />,
+    icon: <Slack className="size-20" />,
     description:
       "Design a cutting-edge webpage for Slack that highlights its real-time collaboration features. Focus on incorporating sle",
   },
   {
     name: "Figma",
-    icon: <Figma className="!size-10" />,
+    icon: <Figma className="size-20" />,
     description:
       "Design a sleek and professional webpage for Figma that emphasizes its collaborative design features. Highlight tools lik",
   },
+];
+
+export const WORK_DIR_NAME = "project";
+export const WORK_DIR = `/home/${WORK_DIR_NAME}`;
+export const MODIFICATIONS_TAG_NAME = "site_file_modifications";
+
+export const allowedHTMLElements = [
+  "a",
+  "b",
+  "blockquote",
+  "br",
+  "code",
+  "dd",
+  "del",
+  "details",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "i",
+  "ins",
+  "kbd",
+  "li",
+  "ol",
+  "p",
+  "pre",
+  "q",
+  "rp",
+  "rt",
+  "ruby",
+  "s",
+  "samp",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "tfoot",
+  "th",
+  "thead",
+  "tr",
+  "ul",
+  "var",
 ];
