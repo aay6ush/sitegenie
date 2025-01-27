@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Copy, Eye, Code, Loader2 } from "lucide-react";
+import { Copy, Eye, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useState, useCallback, useMemo, useEffect } from "react";
@@ -60,13 +60,6 @@ export default function CodePreview({ previewUrl, files }: CodePreviewProps) {
     () => (files ? convertToFileTree(files) : []),
     [files]
   );
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 6000);
-  }, []);
 
   const copyToClipboard = useCallback(async (content: string) => {
     try {
@@ -135,11 +128,6 @@ export default function CodePreview({ previewUrl, files }: CodePreviewProps) {
                 sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"
                 allow="cross-origin-isolated"
               />
-              {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Loader2 className="size-16 animate-spin text-purple-500" />
-                </div>
-              )}
             </div>
           </div>
         </TabsContent>
