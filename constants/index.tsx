@@ -1,5 +1,4 @@
 import { BookOpen, CirclePlus, Flag, Github, Twitter } from "lucide-react";
-import { Figma, Slack } from "./icons";
 
 export const words = [
   "beautiful",
