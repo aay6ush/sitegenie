@@ -1,15 +1,55 @@
 import { motion } from "framer-motion";
-import { Copy, Eye, Code } from "lucide-react";
+import { Copy, Eye, Code, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { convertToFileTree } from "@/lib/utils";
 import FileTree from "./file-tree";
+import Prism from "prismjs";
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-json";
 
-function CodeHighlight({ code }: { code: string }) {
+function getLanguageFromFileName(fileName: string): string {
+  const extension = fileName?.split(".").pop()?.toLowerCase();
+  switch (extension) {
+    case "ts":
+      return "typescript";
+    case "tsx":
+      return "tsx";
+    case "js":
+      return "javascript";
+    case "jsx":
+      return "jsx";
+    case "css":
+      return "css";
+    case "json":
+      return "json";
+    default:
+      return "typescript";
+  }
+}
+
+function CodeHighlight({
+  code,
+  fileName,
+}: {
+  code: string;
+  fileName?: string;
+}) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [code]);
+
+  const language = getLanguageFromFileName(fileName || "");
+
   return (
-    <pre className="p-4 rounded-lg bg-gray-900 text-gray-100 font-mono text-sm leading-relaxed overflow-x-auto">
-      <code className="language-typescript">{code}</code>
+    <pre className="font-mono !text-base leading-relaxed overflow-x-auto !bg-transparent no-scrollbar">
+      <code className={`language-${language}`}>{code}</code>
     </pre>
   );
 }
@@ -20,7 +60,13 @@ export default function CodePreview({ previewUrl, files }: CodePreviewProps) {
     () => (files ? convertToFileTree(files) : []),
     [files]
   );
-  const [iframeError, setIframeError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 6000);
+  }, []);
 
   const copyToClipboard = useCallback(async (content: string) => {
     try {
@@ -77,25 +123,22 @@ export default function CodePreview({ previewUrl, files }: CodePreviewProps) {
                       d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                     />
                   </svg>
-                  {previewUrl || "localhost:3000"}
+                  {"http://localhost:3000"}
                 </div>
               </div>
             </div>
-            <div className="bg-white relative min-h-[400px]">
-              {iframeError ? (
-                <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                  Failed to load preview. Please try again.
+            <div className="bg-white relative min-h-[500px]">
+              <iframe
+                src={previewUrl}
+                className="w-full h-full min-h-[500px]"
+                title="Landing Page Preview"
+                sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"
+                allow="cross-origin-isolated"
+              />
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Loader2 className="size-16 animate-spin text-purple-500" />
                 </div>
-              ) : (
-                <iframe
-                  src={previewUrl}
-                  className="w-full h-full min-h-[400px]"
-                  title="Landing Page Preview"
-                  sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"
-                  allow="cross-origin-isolated"
-                  onError={() => setIframeError(true)}
-                  onLoad={() => setIframeError(false)}
-                />
               )}
             </div>
           </div>
@@ -103,31 +146,40 @@ export default function CodePreview({ previewUrl, files }: CodePreviewProps) {
         <TabsContent value="code" className="mt-6">
           <div className="rounded-xl border border-white/10 bg-gray-900 overflow-hidden">
             <div className="flex">
-              <div className="w-64 border-r border-gray-800 p-4 bg-gray-950">
+              <div className="w-64 border-r border-gray-800 p-4 bg-gray-950 h-[500px] max-h-[500px] overflow-auto no-scrollbar">
                 <FileTree files={fileTree} onSelectFile={setSelectedFile} />
               </div>
               <div className="flex-1 overflow-hidden">
                 {selectedFile ? (
-                  <div className="relative h-full">
+                  <div className="relative h-full max-h-[500px] no-scrollbar">
                     <div className="absolute top-4 right-4 z-10">
                       <Button
                         size="sm"
-                        variant="outline"
-                        className="text-gray-300 hover:text-white hover:bg-gray-800 border-gray-700"
-                        onClick={() =>
-                          copyToClipboard(selectedFile.content || "")
-                        }
+                        variant="secondary"
+                        onClick={() => {
+                          copyToClipboard(selectedFile.content || "");
+                          const button =
+                            document.activeElement as HTMLButtonElement;
+                          button.textContent = "Copied!";
+                          setTimeout(() => {
+                            button.innerHTML =
+                              '<svg viewBox="0 0 24 24" class="h-4 w-4"><path d="M8 17.929H6c-1.105 0-2-.912-2-2.036V5.036C4 3.912 4.895 3 6 3h8c1.105 0 2 .912 2 2.036v1.866m-6 .17h8c1.105 0 2 .91 2 2.035v10.857C20 21.088 19.105 22 18 22h-8c-1.105 0-2-.911-2-2.036V9.107c0-1.124.895-2.036 2-2.036z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Copy';
+                          }, 2000);
+                        }}
                       >
-                        <Copy className="h-4 w-4 mr-2" />
-                        Copy code
+                        <Copy className="h-4 w-4" />
+                        Copy
                       </Button>
                     </div>
-                    <div className="p-4 h-full overflow-auto">
-                      <CodeHighlight code={selectedFile.content || ""} />
+                    <div className="p-4 h-full overflow-auto no-scrollbar">
+                      <CodeHighlight
+                        code={selectedFile.content || ""}
+                        fileName={selectedFile.name}
+                      />
                     </div>
                   </div>
                 ) : (
-                  <div className="flex items-center justify-center h-full min-h-[400px] text-gray-400">
+                  <div className="flex items-center justify-center h-full text-gray-400">
                     Select a file to view its contents
                   </div>
                 )}

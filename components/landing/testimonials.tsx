@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { testimonials } from "@/constants";
 
 export default function Testimonials() {
@@ -31,12 +31,11 @@ export default function Testimonials() {
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {testimonials.map(({ id, quote, image, author, role }) => (
+          {testimonials.map(({ id, quote, author, role }) => (
             <TestimonialCard
               key={id}
               id={id}
               quote={quote}
-              image={image}
               author={author}
               role={role}
             />
@@ -49,13 +48,7 @@ export default function Testimonials() {
   );
 }
 
-const TestimonialCard = ({
-  id,
-  quote,
-  image,
-  author,
-  role,
-}: TestimonialCardProps) => {
+const TestimonialCard = ({ id, quote, author, role }: TestimonialCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -82,8 +75,9 @@ const TestimonialCard = ({
         <div className="flex items-center gap-4">
           <div className="relative shrink-0">
             <Avatar className="size-12">
-              <AvatarImage src={image} />
-              <AvatarFallback>{author.split(" ")?.[0]?.[0]}</AvatarFallback>
+              <AvatarFallback className="text-black text-xl font-medium">
+                {`${author.split(" ")[0][0]}${author.split(" ")[1]?.[0]}`}
+              </AvatarFallback>
             </Avatar>
             <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#020817] flex items-center justify-center">
               <div className="w-3 h-3 rounded-full bg-green-500" />

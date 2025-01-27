@@ -1,6 +1,28 @@
-import { getFileIcon } from "@/lib/utils";
-import { ChevronRight, Folder } from "lucide-react";
-import { useCallback, useState } from "react";
+import { ChevronRight, File, Folder } from "lucide-react";
+import { ReactElement, useCallback, useState } from "react";
+
+export const FILE_ICONS: Record<string, ReactElement> = {
+  js: <File className="h-4 w-4 text-yellow-400" />,
+  jsx: <File className="h-4 w-4 text-yellow-400" />,
+  ts: <File className="h-4 w-4 text-blue-400" />,
+  tsx: <File className="h-4 w-4 text-blue-400" />,
+
+  css: <File className="h-4 w-4 text-purple-400" />,
+  html: <File className="h-4 w-4 text-orange-400" />,
+
+  json: <File className="h-4 w-4 text-red-400" />,
+
+  default: <File className="h-4 w-4 text-gray-400" />,
+};
+
+export function getFileIcon(fileName: string) {
+  if (fileName in FILE_ICONS) {
+    return FILE_ICONS[fileName];
+  }
+
+  const extension = fileName.split(".").pop()?.toLowerCase() || "";
+  return FILE_ICONS[extension] || FILE_ICONS.default;
+}
 
 export default function FileTree({
   files,
@@ -24,7 +46,7 @@ export default function FileTree({
       const isFolder = node.type === "folder";
 
       return (
-        <div key={currentPath} className="ml-4 first:ml-0">
+        <div key={currentPath} className="ml-4">
           <div
             className="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-gray-800/50 rounded px-2 transition-colors duration-150 group"
             onClick={() =>

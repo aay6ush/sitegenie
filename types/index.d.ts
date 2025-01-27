@@ -11,7 +11,6 @@ declare type TestimonialCardProps = {
   quote: string;
   author: string;
   role: string;
-  image: string;
 };
 
 declare type PricingPlanCard = {
@@ -44,7 +43,7 @@ declare type CodePreviewProps = {
 };
 
 declare type Message = {
-  role: "user" | "assistant";
+  role: "user" | "model";
   content: string;
 };
 
@@ -60,17 +59,11 @@ declare type SiteAction = {
 };
 
 declare type GenerateFormProps = {
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  setIsLoading: (isLoading: boolean) => void;
   isGenerated: boolean;
-  setIsGenerated: Dispatch<SetStateAction<boolean>>;
-  onPreviewUpdate: (url: string, newFiles: Record<string, string>) => void;
-  setShowExamples: Dispatch<SetStateAction<boolean>>;
-  selectedPrompt: string;
-};
-
-declare type Message = {
-  role: "user" | "assistant";
-  content: string;
+  setIsGenerated: (isGenerated: boolean) => void;
+  onPreviewUpdate?: (url: string, files: Record<string, string>) => void;
+  setProgress: (progress: number) => void;
 };
 
 declare type FileNode = {

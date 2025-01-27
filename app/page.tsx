@@ -14,8 +14,8 @@ export default function Home() {
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,0.5)_100%)] pointer-events-none" />
       <Hero />
       <Features />
-      <Testimonials />
       <Stats />
+      <Testimonials />
       <Pricing />
       <FAQ />
       <Developer />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +16,7 @@ import {
 import useWebContainer from "@/hooks/web-container";
 import { parseSiteArtifact } from "@/lib/utils";
 import { BASE_PROMPT, reactBasePrompt } from "@/constants/prompts";
+import { BorderBeam } from "../ui/border-beam";
 
 const formSchema = z.object({
   prompt: z
@@ -28,8 +29,7 @@ export default function GenerateForm({
   setIsLoading,
   setIsGenerated,
   onPreviewUpdate,
-  setShowExamples,
-  selectedPrompt,
+  setProgress,
 }: GenerateFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -52,17 +52,6 @@ export default function GenerateForm({
     },
   });
 
-  async function submitForm() {
-    form.setValue("prompt", selectedPrompt);
-    await onSubmit({ prompt: selectedPrompt });
-  }
-
-  useEffect(() => {
-    if (selectedPrompt) {
-      submitForm();
-    }
-  }, [selectedPrompt, submitForm]);
-
   async function onSubmit(values: z.infer<typeof formSchema>) {
     if (!values.prompt.trim() || isSubmitting) return;
 
@@ -71,7 +60,7 @@ export default function GenerateForm({
       setIsSubmitting(true);
       setIsLoading(true);
       setIsGenerated(true);
-      setShowExamples(false);
+      setProgress(10);
 
       if (!instance) {
         throw new Error("WebContainer is not initialized");
@@ -84,6 +73,7 @@ export default function GenerateForm({
 
       const updatedHistory = [...conversationHistory, userMessage];
       setConversationHistory(updatedHistory);
+      setProgress(20);
 
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -99,16 +89,20 @@ export default function GenerateForm({
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
+      setProgress(40);
+
       const data = await response.json();
 
       if (data.error) {
         throw new Error(data.error);
       }
 
+      setProgress(50);
+
       setConversationHistory([
         ...updatedHistory,
         {
-          role: "assistant",
+          role: "model",
           content: data.message,
         },
       ]);
@@ -121,6 +115,8 @@ export default function GenerateForm({
         }
       }
 
+      setProgress(60);
+
       const generatedActions = parseSiteArtifact(data.message);
       const generatedFiles: Record<string, string> = {};
       for (const action of generatedActions) {
@@ -130,6 +126,7 @@ export default function GenerateForm({
       }
 
       const files = { ...baseFiles, ...generatedFiles };
+      setProgress(70);
 
       type FileSystemTree = Record<
         string,
@@ -155,6 +152,7 @@ export default function GenerateForm({
       }
 
       await instance.mount(fileSystem);
+      setProgress(80);
 
       const installProcess = await instance.spawn("npm", ["install"]);
       const installExitCode = await installProcess.exit;
@@ -163,10 +161,13 @@ export default function GenerateForm({
         throw new Error("Failed to install dependencies");
       }
 
+      setProgress(90);
+
       await instance.spawn("npm", ["run", "dev"]);
 
       instance.on("server-ready", (port, url) => {
         onPreviewUpdate?.(url, files);
+        setProgress(100);
         setIsLoading(false);
       });
 
@@ -178,6 +179,7 @@ export default function GenerateForm({
       );
       setIsLoading(false);
       setIsGenerated(false);
+      setProgress(0);
     } finally {
       setIsSubmitting(false);
     }
@@ -190,7 +192,6 @@ export default function GenerateForm({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative"
         >
           <FormField
             control={form.control}
@@ -201,11 +202,11 @@ export default function GenerateForm({
                   <Textarea
                     {...field}
                     placeholder={
-                      conversationHistory.length > 0
+                      conversationHistory.length > 2
                         ? "What would you like to change in your website?"
                         : "Describe your website and watch the magic happen..."
                     }
-                    className="!text-lg p-4 min-h-[120px] w-full bg-black/20 border-white/[0.08] hover:border-white/[0.12] focus:border-purple-500/50 rounded-xl resize-none text-white placeholder:text-white/40 shadow-xl shadow-purple-500/5 focus:shadow-purple-500/10 transition-all duration-200"
+                    className="no-scrollbar !text-lg p-4 min-h-[120px] w-full bg-black/20 border-white/[0.08] hover:border-white/[0.12] focus:border-purple-500/50 rounded-xl resize-none text-white placeholder:text-white/40 shadow-xl shadow-purple-500/5 focus:shadow-purple-500/10 transition-all duration-200"
                     disabled={isSubmitting}
                   />
                 </FormControl>
@@ -225,6 +226,7 @@ export default function GenerateForm({
             <Send className="h-5 w-5" />
             <span className="sr-only">Send</span>
           </Button>
+          <BorderBeam className="rounded-xl" />
         </motion.div>
       </form>
     </Form>

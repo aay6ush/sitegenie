@@ -42,10 +42,10 @@ export default function CTA() {
             className="space-y-4"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-              Get it right the first time.
+              Transform ideas into reality.
             </h2>
             <h3 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-400">
-              Build it with the experts.
+              Let AI build perfect website.
             </h3>
           </motion.div>
 

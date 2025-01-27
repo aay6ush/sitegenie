@@ -25,8 +25,7 @@ export default function Developer() {
               Meet the Developer
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Building the future of AI-powered web development, one page at a
-              time.
+              Building the future of AI-powered web development
             </p>
           </motion.div>
 

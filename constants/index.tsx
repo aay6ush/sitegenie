@@ -1,16 +1,5 @@
-import {
-  BookOpen,
-  CirclePlus,
-  File,
-  Flag,
-  Github,
-  Palette,
-  Sparkles,
-  Twitter,
-  Wand2,
-} from "lucide-react";
+import { BookOpen, CirclePlus, Flag, Github, Twitter } from "lucide-react";
 import { Figma, Slack } from "./icons";
-import { ReactElement } from "react";
 
 export const words = [
   "beautiful",
@@ -20,53 +9,13 @@ export const words = [
   "modern",
 ];
 
-export const features = [
-  {
-    id: 1,
-    icon: <Wand2 className="size-6" />,
-    title: "AI-Powered Generation",
-    description: [
-      "Generate complete websites from text descriptions",
-      "Smart suggestions based on your content",
-      "SEO-optimized structure and content",
-    ],
-    accentColor: "from-purple-500 to-purple-600",
-    buttonColor: "bg-purple-50/10",
-  },
-  {
-    id: 2,
-    icon: <Palette className="size-6" />,
-    title: "Custom Styling",
-    description: [
-      "Customize every aspect of your design",
-      "Real-time preview of changes",
-      "Export clean, production-ready code",
-    ],
-    accentColor: "from-blue-500 to-blue-600",
-    buttonColor: "bg-blue-50/10",
-  },
-  {
-    id: 3,
-    icon: <Sparkles className="size-6" />,
-    title: "Smart Components",
-    description: [
-      "Pre-built, customizable components",
-      "Responsive layouts out of the box",
-      "Optimized for performance",
-    ],
-    accentColor: "from-pink-500 to-pink-600",
-    buttonColor: "bg-pink-50/10",
-  },
-];
-
 export const testimonials = [
   {
     id: 1,
     quote:
-      "SiteGenie has completely transformed how we create websites. The AI understands exactly what we need, and the results are consistently impressive. We've cut our development time by 70%.",
+      "SiteGenie has completely transformed how we create websites. The AI understands exactly what we need, and the results are consistently impressive.",
     author: "Sarah Chen",
     role: "Marketing Director",
-    image: "/placeholder.svg?height=80&width=80",
   },
   {
     id: 2,
@@ -74,7 +23,6 @@ export const testimonials = [
       "The level of customization and control while maintaining the ease of use is unprecedented. It's like having a professional design team that works at the speed of thought.",
     author: "Michael Roberts",
     role: "Startup Founder",
-    image: "/placeholder.svg?height=80&width=80",
   },
   {
     id: 3,
@@ -82,14 +30,12 @@ export const testimonials = [
       "Since implementing SiteGenie, our conversion rates have increased by 40%. The AI-generated layouts are not just beautiful, they're strategically designed to convert.",
     author: "Emily Parker",
     role: "Growth Lead",
-    image: "/placeholder.svg?height=80&width=80",
   },
 ];
 
 export const stats = [
   { label: "USERS", value: "8,781" },
   { label: "WEBSITES", value: "279,903" },
-  { label: "DEPLOYS", value: "162,105" },
   { label: "PROMPTS", value: "291,392" },
 ];
 
@@ -97,7 +43,7 @@ export const plans = [
   {
     id: 1,
     name: "Starter",
-    description: "Perfect for individuals and small projects",
+    description: "Perfect for individuals",
     monthlyPrice: 49,
     yearlyPrice: 470,
     isPopular: false,
@@ -174,21 +120,6 @@ export const menuItems = [
   { icon: Flag, href: "/feedback" },
 ];
 
-export const promptExamples = [
-  {
-    name: "Slack",
-    icon: <Slack className="size-20" />,
-    prompt:
-      "Design a cutting-edge webpage for Slack that highlights its real-time collaboration features. Focus on incorporating sleek animations, modern UI elements, and a clean layout that showcases how Slack enables seamless team communication and file sharing. Include sections for key features like channels, threads, integrations, and mobile access.",
-  },
-  {
-    name: "Figma",
-    icon: <Figma className="size-20" />,
-    prompt:
-      "Design a sleek and professional webpage for Figma that emphasizes its collaborative design features. Highlight tools like real-time collaboration, components, auto-layout, and prototyping. Use a minimalist design with subtle animations and interactive elements to demonstrate Figma's modern approach to design tools. Include sections for key features, pricing, and customer testimonials.",
-  },
-];
-
 export const WORK_DIR_NAME = "project";
 export const WORK_DIR = `/home/${WORK_DIR_NAME}`;
 export const MODIFICATIONS_TAG_NAME = "site_file_modifications";
@@ -243,27 +174,3 @@ export const allowedHTMLElements = [
   "ul",
   "var",
 ];
-
-export const FILE_ICONS: Record<string, ReactElement> = {
-  json: <File className="h-4 w-4 text-yellow-400" />,
-  js: <File className="h-4 w-4 text-yellow-400" />,
-  ts: <File className="h-4 w-4 text-blue-400" />,
-  tsx: <File className="h-4 w-4 text-blue-400" />,
-  jsx: <File className="h-4 w-4 text-blue-400" />,
-
-  css: <File className="h-4 w-4 text-purple-400" />,
-  scss: <File className="h-4 w-4 text-purple-400" />,
-  less: <File className="h-4 w-4 text-purple-400" />,
-
-  html: <File className="h-4 w-4 text-orange-400" />,
-
-  "package.json": <File className="h-4 w-4 text-red-400" />,
-  "package-lock.json": <File className="h-4 w-4 text-red-400" />,
-  "yarn.lock": <File className="h-4 w-4 text-red-400" />,
-  "pnpm-lock.yaml": <File className="h-4 w-4 text-red-400" />,
-
-  ".env": <File className="h-4 w-4 text-green-400" />,
-  ".gitignore": <File className="h-4 w-4 text-gray-400" />,
-
-  default: <File className="h-4 w-4 text-gray-400" />,
-};

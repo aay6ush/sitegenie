@@ -25,8 +25,8 @@ export default function Stats() {
             <span className="text-gray-400"> (and counting)</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Real-time usage showing totals for users and websites created, along
-            with 30-day prompts, requests, and analytics.
+            Real-time usage showing total number of users and websites created,
+            along with 30-day prompt requests.
           </p>
         </motion.div>
 

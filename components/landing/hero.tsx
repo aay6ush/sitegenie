@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import WordRotate from "@/components/ui/word-rotate";
-import HeroVideoDialog from "@/components/ui/hero-video-dialog";
-import { BorderBeam } from "@/components/ui/border-beam";
+// import HeroVideoDialog from "@/components/ui/hero-video-dialog";
+// import { BorderBeam } from "@/components/ui/border-beam";
 import { words } from "@/constants";
 
 export default function Hero() {
@@ -100,7 +100,7 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
@@ -117,7 +117,7 @@ export default function Hero() {
               />
             </div>
             <BorderBeam size={250} duration={12} delay={9} />
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 

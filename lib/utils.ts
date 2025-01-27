@@ -1,4 +1,3 @@
-import { FILE_ICONS } from "@/constants";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -42,15 +41,6 @@ export function parseSiteArtifact(message: string): SiteAction[] {
   }
 
   return actions;
-}
-
-export function getFileIcon(fileName: string) {
-  if (fileName in FILE_ICONS) {
-    return FILE_ICONS[fileName];
-  }
-
-  const extension = fileName.split(".").pop()?.toLowerCase() || "";
-  return FILE_ICONS[extension] || FILE_ICONS.default;
 }
 
 export function convertToFileTree(files: Record<string, string>) {
