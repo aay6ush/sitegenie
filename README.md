@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SiteGenie 🪄
 
-## Getting Started
+A powerful AI-powered landing page builder that transforms text descriptions into beautiful websites.
 
-First, run the development server:
+![SiteGenie Preview](/public/preview.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features 🚀
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **AI Generation**: Create complete landing pages from natural language descriptions
+- **Smart Components**: Pre-built, customizable components with responsive layouts
+- **Custom Styling**: Full control over design with real-time preview
+- **Code Export**: Copy clean, production-ready code
+- **Modern Design**: Beautiful, conversion-focused layouts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack 💻
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js](https://nextjs.org/) – React Framework
+- [TypeScript](https://www.typescriptlang.org/) - Language
+- [Tailwind](https://tailwindcss.com/) – CSS
+- [Framer Motion](https://www.framer.com/motion/) – Animations
+- [Prism.js](https://prismjs.com/) - Code Highlighting
+- [WebContainers](https://webcontainers.io/) - In-browser Development
+- [Gemini AI](https://deepmind.google/technologies/gemini/) - AI Model
 
-## Learn More
+## Getting Started 🌟
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/aay6ush/sitegenie.git
+   cd sitegenie
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Set up environment variables**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   cp .env.example .env
+   ```
+
+4. **Start development server**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Visit localhost:3000**
+
+## Contributing 🤝
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License 📝
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

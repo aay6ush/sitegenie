@@ -8,7 +8,7 @@ const features = [
     icon: Wand2,
     title: "AI-Powered Generation",
     description:
-      "Create complete landing pages from text descriptions with smart layout suggestions and SEO-optimized structure.",
+      "Create complete landing pages from text with smart layout suggestions and SEO-optimized structure.",
     accentColor: "from-purple-500 to-purple-600",
     buttonColor: "bg-purple-50/10",
   },

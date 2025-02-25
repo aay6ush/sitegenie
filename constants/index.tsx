@@ -34,7 +34,7 @@ export const testimonials = [
 
 export const stats = [
   { label: "USERS", value: "8,781" },
-  { label: "WEBSITES", value: "279,903" },
+  { label: "WEBSITES", value: "79,903" },
   { label: "PROMPTS", value: "291,392" },
 ];
 
@@ -109,8 +109,8 @@ export const faqs = [
 ];
 
 export const socialLinks = [
-  { icon: Github, href: "https://github.com/aay6ush", label: "GitHub" },
   { icon: Twitter, href: "https://x.com/aay6ush", label: "Twitter" },
+  { icon: Github, href: "https://github.com/aay6ush", label: "GitHub" },
 ];
 
 export const menuItems = [

@@ -1,7 +1,6 @@
 import Hero from "@/components/landing/hero";
 import Features from "@/components/landing/features";
 import Stats from "@/components/landing/stats";
-import Pricing from "@/components/landing/pricing";
 import FAQ from "@/components/landing/faq";
 import Developer from "@/components/landing/developer";
 import CTA from "@/components/landing/cta";
@@ -16,7 +15,6 @@ export default function Home() {
       <Features />
       <Stats />
       <Testimonials />
-      <Pricing />
       <FAQ />
       <Developer />
       <CTA />
